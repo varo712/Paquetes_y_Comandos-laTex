@@ -1,0 +1,237 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{kpfonts}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\usepackage{cprotect}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Álvaro Hurtado}
+\lhead{DGME}
+\rfoot{\thepage}
+
+\author{Álvaro Hurtado}
+\title{Paquetes y comandos más utilizados}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Paquetes}
+
+\begin{enumerate}
+
+\item \textbf{Da color al documento:}
+\begin{verbatim}
+\usepackage{xcolor}
+\end{verbatim}
+
+\item \textbf{Reduce los márgenes laterales para que la parte donde se escribe abarque más en cada página:}
+\begin{verbatim}
+\usepackage{fullpage}
+\end{verbatim}
+
+\item \textbf{Permite dibujar gráficas:}
+\begin{verbatim}
+\usepackage{tkz-fct}
+\end{verbatim}
+
+\item \textbf{Permite dibujar figuras:}
+\begin{verbatim}
+\usepackage{tikz}
+\end{verbatim}
+
+\item \textbf{Permite utilizar Maxima dentro del documento e imprimir la solución a los problemas sin necesidad de intermediarios o copiar y pegar partes de texto:}
+\begin{verbatim}
+\usepackage{maxiplot}
+\end{verbatim}
+
+\item \textbf{Permite modificar la tabla de contenidos (índice de contenidos) del documento:}
+\begin{verbatim}
+\usepackage{tocloft}
+\renewcommand{\cftsecdotsep}{.} %Pone puntos entre el "leader" y la página
+\end{verbatim}
+
+\item \textbf{Permite introducir hipervínculos en nuestro documento:}
+\begin{verbatim}
+\usepackage[hidelinks]{hyperref} %hidelinks para que no aparezcan las cajas
+\end{verbatim}
+(el comando \verb|\url{direccion}| muestra la dirección y el comando\\ \verb|\href{direccion}{texto alternativo}| muestra un texto diferente)
+
+\item \textbf{Permite incluir teoremas, demostraciones, etc; en tu documento:}
+\begin{verbatim}
+\usepackage{amsthm}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[chapter]
+\newtheorem{example}{Ejemplo}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{corollary}[theorem]{Corolario}
+\theoremstyle{remark}
+\newtheorem{remark}{Observación}[chapter]
+
+\renewcommand\qedsymbol{$\blacksquare$}
+\end{verbatim}
+(Para un artículo cambiar \verb|chapter| por \verb|section|)
+
+\item \textbf{Permite crear subfiguras dentro del entorno \texttt{figure}:}
+\begin{verbatim}
+\usepackage{subfigure}
+\end{verbatim}
+(Para utilizarlo es necesario abrir dentro del entorno \texttt{figure} otro entorno llamado \texttt{subfigure})
+
+\item \cprotect\textbf{Permite hacer referencias de una manera más cómoda, eliminando la obligación de añadir prefijos a \verb|\ref{•}|:}
+\begin{verbatim}
+\usepackage{cleveref}
+\end{verbatim}
+(define el comando \verb|\cref{•}|)
+
+\item \textbf{Permite añadir comentarios (p.ej. para numerarlas) a las filas y columnas de una matriz:}
+\begin{verbatim}
+\usepackage{kbordermatrix}
+\end{verbatim}
+
+\item \textbf{Permite imprimir texto de manera literal, es decir, \LaTeX~ ignora el contenido:} \textit{(ver siguiente apartado)}
+\begin{verbatim}
+\usepackage{verbatim}
+\end{verbatim}
+(Mejora el entorno \verb|verbatim| que ya contiene \LaTeX~ por defecto, haciendo posible un mayor control de los espacios dentro de dicho entorno y añadiendo el entono \verb|comment|, con el mismo efecto de \verb|verbatim| pero sin imprimir el contenido)
+
+\item \cprotect\textbf{Permite utilizar \verb|\verb| en diferentes entornos:}
+\begin{verbatim}
+\usepackage{cprotect}
+\end{verbatim}
+(para llevar a cabo esta acción es necesario incluir \verb|\cprotect| antes del entorno donde se desea incluir dicho comando)
+
+\item \textbf{Permite tener un mayor control de los encabezados y pies de página:}
+\begin{verbatim}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Álvaro Hurtado}
+\lhead{DGME}
+\rfoot{\thepage}
+\end{verbatim}
+
+\item \cprotect \textbf{Permiten usar el comando \verb|\mathscr{•}|, que nos proporciona una manera de escribir letras elegantes:}
+\begin{enumerate}
+	\item \verb|\usepackage[mathscr]{euscript}|
+	\item \verb|\usepackage{mathrsfs}|
+\end{enumerate}
+
+\item \textbf{Añade una estética diferente a los títulos de los capítulos y permite escribir citas junto a estos de una manera más agradable a la vista:}
+\begin{verbatim}
+	\usepackage{quotchap}
+\end{verbatim}
+
+\item \cprotect \textbf{Permite escribir letras minúsculas en el estilo de letra de \verb|\mathbb{•}|:}
+\begin{verbatim}
+	\usepackage{bbm}
+\end{verbatim}
+(para poder llevar acabo dicha acción es necesario escribir el comando \verb|\mathbbm{•}|)
+
+\item \textbf{Te permite tachar con una línea oblicua dentro del modo matemático:}
+\begin{verbatim}
+	\usepackage{cancel}
+\end{verbatim}
+Añade los siguientes comandos:
+\begin{verbatim}
+	\cancel{text} #Tacha el texto con una barra
+	\cancelto{text1}{text2} #Tacha el texto con una flecha y agrega por que se sustituye
+	\xcancel{text} #Tacha con una X
+	\bcancel{text} #Tacha con una contrabarra
+\end{verbatim}
+
+\end{enumerate}
+
+\section{Comandos}
+
+\begin{enumerate}
+
+\item \verb|\newcommand{\R}{\mathbb{R}}|
+
+\item \verb|\newcommand{\then}{~\Longrightarrow~}|
+
+\item \verb|\newcommand{\tq}{\mbox{ t.q. }}|
+
+\item Comando para derivadas parciales:
+\begin{verbatim}
+\newcommand{\Partial}[2]{\frac{\partial #1}{\partial #2}}
+\end{verbatim}
+
+\item Comando para derivadas en Notación de Leibniz:
+\begin{verbatim}
+\newcommand{\D}[2]{\frac{d #1}{d #2}}
+\end{verbatim}
+
+\item Añadir en la primera línea de la bibliografía para que esta aparezca en el TOC:
+	\begin{enumerate}
+		\item Para artículos: \verb|\addcontentsline{toc}{section}{\refname}|
+		\item Para libros: \verb|\addcontentsline{toc}{chapter}{\refname}|
+	\end{enumerate}
+	(En general, para añadir un apartado nuevo al TOC, utilizaremos el comando \linebreak \verb|\addcontentsline{text}{secunit}{entry}|. \texttt{text} es donde queremos añadir el apartado; \texttt{secunit} es el tipo de entrada que queremos que sea, por ejemplo, \texttt{chapter}, \texttt{section}, etc; y \texttt{entry} es la entrada que queremos que aparezca en \texttt{text})
+
+\item Cambiar el nombre de la bibliografía (antes del entorno):\\
+\verb|\renewcommand{\refname}{Bibliografía}|
+
+\item \verb|\newcommand{\latex}{\LaTeX~}|
+
+\item Clausura de un conjunto (closure):
+\begin{verbatim}
+	\newcommand{\clo}[1]{\overline{#1}}
+\end{verbatim}
+o bien
+\begin{verbatim}
+	\newcommand{\clo}[1]{\bar{#1}}
+\end{verbatim}
+
+\item Conjunto complementario:
+\begin{verbatim}
+	\newcommand{\comp}[1]{#1^\complement}
+\end{verbatim}
+
+\end{enumerate}
+
+\section{Entornos}
+
+\begin{enumerate}
+	
+\item Recuadro sencillo para insertar texto:
+\begin{verbatim}
+	\newenvironment{Boxed}{
+		\begin{center}
+			\begin{tabular}{|p{0.9\textwidth}|}
+				\hline \vspace{0.5mm}}{
+				\vspace{2mm} \\ \hline
+			\end{tabular}
+	\end{center}}
+\end{verbatim}
+
+\item Define un entorno \texttt{note} para introducir notas entre dos líneas horizontales:
+\begin{verbatim}
+	\newenvironment{note}{
+		\begin{center}
+			\begin{tabular}{p{0.9\textwidth}}
+				\hline \\
+				\textbf{NOTA: }}{
+				\\ \\ \hline
+			\end{tabular}
+	\end{center}}
+\end{verbatim}
+
+\end{enumerate}
+
+\end{document}

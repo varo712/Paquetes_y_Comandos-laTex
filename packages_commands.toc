@@ -1,0 +1,4 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Paquetes}{1}{}%
+\contentsline {section}{\numberline {2}Comandos}{3}{}%
+\contentsline {section}{\numberline {3}Entornos}{4}{}%
